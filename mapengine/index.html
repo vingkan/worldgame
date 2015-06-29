@@ -10,7 +10,6 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<script type="text/javascript" src="interactiveCanvas.js"></script>
 <script type="text/javascript" src="script.js"></script>
 
 </head>
@@ -25,7 +24,9 @@
 
 	<div class="spacer" style="height: 60px;"></div>
 
-	<canvas id="map"></canvas>
+	<canvas id="map" width="900px" height="600px" background="red"></canvas>
+
+	<textarea id="console"></textarea>
 
 	<h1>Heading 1</h1>
 	<h2>Heading 2</h2>
@@ -34,8 +35,15 @@
 
 <script>
 
-	var cMap = new CanvasState(document.getElementById('map'));
-	cMap.addShape(new Shape(40,40,50,50), 'orange');
+	var canvas = document.getElementById('map');
+	var ctx = canvas.getContext('2d');
+
+	var node1 = new Node(30, 40);
+	var node2 = new Node(100, 400);
+	node1.draw(ctx);
+	node2.draw(ctx);
+
+	drawGrid(canvas, 50);
 
 </script>
 

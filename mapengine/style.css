@@ -38,6 +38,22 @@ canvas#map{
 	background: #CCCCCC;
 }
 
+textarea#console{
+	margin: 15px;
+	padding: 10px;
+	width: 880px;
+	height: 100px;
+	max-width: 880px;
+	overflow-y: scroll;
+	border: none;
+	outline: none;
+	background: #1A1A1A;
+	color: white;
+	font-family: "Consolas";
+	font-size: 15px;
+	line-height: 20px;
+}
+
 /* TEXT OBJECTS */
 
 p{
