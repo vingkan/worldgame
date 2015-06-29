@@ -1,13 +1,19 @@
 function getPosition(event){
+	var canvas = document.getElementById('map');
+
+	event.target.removeEventListener(event.type, arguments.callee);
+
 	var x = event.x;
 	var y = event.y;
-	var canvas = document.getElementById('map');
+	
 	x -= canvas.offsetLeft;
 	y -= canvas.offsetTop;
+	
 	document.getElementById('nodeCoord-x').value = x;
 	document.getElementById('nodeCoord-y').value = y;
 	document.getElementById('nodeCoord').style.display = 'block';
-	canvas.removeEventListener('mousedown', getPosition, false);
+	
+	log("removed!");
 }
 
 function newNode(){
@@ -27,6 +33,4 @@ function closeNode(){
 	document.getElementById('nodeCoord-x').value = 0;
 	document.getElementById('nodeCoord-y').value = 0;
 	document.getElementById('nodeCoord').style.display = 'none';
-	var canvas = document.getElementById('map');
-	canvas.removeEventListener('mousedown', getPosition);
 }
