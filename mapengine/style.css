@@ -1,6 +1,8 @@
 html, body{
 	padding: 0;
 	margin: 0;
+	border: none;
+	outline: none;
 }
 
 html{
@@ -18,7 +20,6 @@ div#header{
 	background: black;
 	height: 60px;
 	width: 100%;
-	
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -27,9 +28,59 @@ div#header{
 
 	div#menu{
 		width: 930px;
+		height: 60px;
 		margin: auto;
-		background: #2B2B2B;
+		background: transparent;
 	}
+
+	div#menu div.button{
+		float: left;
+		margin: 15px 0 0 0;
+		padding: 5px;
+		width: 75px;
+		height: 20px;
+		line-height: 20px;
+		background: rgba(255,165,0,1.0);
+		text-align: center;
+		color: white;
+		font-family: "Open Sans";
+		font-size: 15px;
+		z-index: 10;
+		font-weight: bold;
+	}
+
+		div#menu div.button:hover{
+			background: white;
+			color: orange;
+		}
+
+		div#nodeCoord{
+			float: left;
+			margin: 5px 0 0 -5px;
+			padding: 5px 5px 10px 5px;
+			width: 75px;
+			height: 85px;
+			line-height: 20px;
+			background: #1A1A1A;
+			z-index: 5;
+		}
+
+		div#nodeCoord input{
+			margin: 5px;
+			padding: 0;
+			float: left;
+			border: none;
+			outline: none;
+			width: 27.5px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			font-family: "Open Sans";
+			font-size: 12px;
+			background: white;
+			color: #1A1A1A;
+			font-weight: bold;
+		}
 
 canvas#map{
 	margin: 15px;

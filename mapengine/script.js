@@ -7,27 +7,17 @@ function deg(degrees){
 	return (Math.PI/180)*degrees;
 }
 
-function CanvasMap(id){
-	this.id = id;
-	this.nodes = [];
-
-}
-
-CanvasMap.prototype.pushNode = function(node){
-	this.nodes.push(node);
-	log(node.toString());
-}
-
-var map = new CanvasMap('map');
-
 function Coordinate(x, y){
 	this.x = x || 0;
 	this.y = y || 0;	
 }
 
-function Node(x, y){
+function Node(x, y, map){
 	this.coord = new Coordinate(x, y);
-	map.pushNode(this);
+	this.map = map || null;
+	if(map != null){
+		map.pushNode(this);
+	}
 }
 
 Node.prototype.toString = function(){
@@ -42,37 +32,19 @@ Node.prototype.draw = function(ctx){
 	ctx.closePath();
 }
 
-function drawGrid(canvas, interval){
-	var ctx = canvas.getContext('2d');
-	ctx.lineWidth = "0.5";
-	ctx.strokeStyle = "white";
-	//HORIZONTAL GRIDLINES
-	for(var y = 0; y <= canvas.height; y += interval){
-		ctx.beginPath();
-		ctx.moveTo(0, y);
-		ctx.lineTo(canvas.width, y);
-		ctx.stroke();
+function connectNodes(nodes, ctx){
+	ctx.strokeStyle = "blue";
+	ctx.fillStyle = "yellow";
+	ctx.lineWidth = "1";
+	ctx.beginPath();
+	var i = 0;
+	while(i < nodes.length - 1){
+		ctx.moveTo(nodes[i].coord.x, nodes[i].coord.y);
+		ctx.lineTo(nodes[i+1].coord.x, nodes[i+1].coord.y);
+		i++
 	}
-	//VERTICAL GRIDLINES
-	for(var x = 0; x <= canvas.width; x += interval){
-		ctx.beginPath();
-		ctx.moveTo(x, 0);
-		ctx.lineTo(x, canvas.height);
-		ctx.stroke();
-	}
+	ctx.lineTo(nodes[0].coord.x, nodes[0].coord.y);
+	ctx.fill();
+	ctx.stroke();
 	ctx.closePath();
-	//HORIZONTAL NODES
-	for(var x = 0; x <= canvas.width; x += interval){
-		var startNode = new Node(x, 0);
-		var endNode = new Node(x, canvas.height);
-		startNode.draw(ctx);
-		endNode.draw(ctx);
-	}
-	//VERTICAL NODES
-	for(var y = 0; y <= canvas.height; y += interval){
-		var startNode = new Node(0, y);
-		var endNode = new Node(canvas.width, y);
-		startNode.draw(ctx);
-		endNode.draw(ctx);
-	}
 }
