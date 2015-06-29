@@ -1,3 +1,68 @@
 html, body{
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	background: #1A1A1A;
+}
+
+body{
+	margin: auto;
+	width: 930px;
+	padding: 15px;
+	background: white;
+}
+
+div#header{
+	background: black;
+	height: 60px;
+	width: 100%;
 	
+	position: fixed;
+	left: 0;
+	top: 0;
+	color: white;
+}
+
+	div#menu{
+		width: 930px;
+		margin: auto;
+		background: #2B2B2B;
+	}
+
+canvas#map{
+	margin: 15px;
+	width: 900px;
+	height: 600px;
+	background: #CCCCCC;
+}
+
+/* TEXT OBJECTS */
+
+p{
+	margin: 15px;
+	font-family: "Open Sans";
+	font-size: 15px;
+	line-height: 20px;
+}
+
+h1, h2, h3{
+	margin: 15px;
+	font-family: "Oswald";
+}
+
+h1{
+	font-size: 28px;
+	line-height: 30px;
+}
+
+h2{
+	font-size: 22px;
+	line-height: 25px;
+}
+
+h3{
+	font-size: 18px;
+	line-height: 20px;
 }

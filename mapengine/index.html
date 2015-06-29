@@ -8,11 +8,34 @@
 
 </style>
 
+<link rel="stylesheet" type="text/css" href="style.css">
+
+<script type="text/javascript" src="interactiveCanvas.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
 </head>
 
 <body>
 
+	<div id="header">
+		<div id="menu">
+			<h1 style="width: 280px;">World Game Map Engine</h1>
+		</div>
+	</div>
+
+	<div class="spacer" style="height: 60px;"></div>
+
+	<canvas id="map"></canvas>
+
+	<h1>Heading 1</h1>
+	<h2>Heading 2</h2>
+	<h3>Heading 3</h3>
+	<p>Paragraph</p>
+
 <script>
+
+	var cMap = new CanvasState(document.getElementById('map'));
+	cMap.addShape(new Shape(40,40,50,50), 'orange');
 
 </script>
 
