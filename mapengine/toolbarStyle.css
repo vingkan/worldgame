@@ -1,4 +1,4 @@
-div#toolbar-point{
+div.toolbar{
 	width: 870px;
 	margin: 15px;
 	background: #CCCCCC;
@@ -8,7 +8,7 @@ div#toolbar-point{
 
 }
 
-div#toolbar-point input, select{
+div.toolbar input, select{
 	border: none;
 	outline: none;
 	height: 30px;
@@ -16,17 +16,56 @@ div#toolbar-point input, select{
 	font-family: "Open Sans";
 }
 
-div#toolbar-point input[type="number"]{
+div.toolbar input[type="number"]{
 	width: 100px;
 	height: 20px;
 	padding: 5px;
 }
 
-div#toolbar-point input[type="button"]{
+div.toolbar input[type="text"]{
+
+}
+
+div.toolbar input[type="color"]{
+	width: 100px;
+}
+
+div.toolbar input[type="button"]{
 	color: white;
 	width: 30px;
 }
 
-div#toolbar-point select{
+div.toolbar select{
 	width: 120px;
+}
+
+div#pointSpace{
+	margin: 10px 0 0 0;
+	width: 855px;
+	height: 40px;
+	padding: 5px;
+	background: #1A1A1A;
+}
+
+div.pointDiv{
+	float: left;
+	background: purple;
+	margin: 5px;
+	height: 30px;
+	line-height: 30px;
+	width: 150px;
+	font-size: 15px;
+	color: white;
+	font-family: "Open Sans";
+}
+
+div.pointDiv input[type="text"]{
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	color: white;
+	font-weight: bold;
+	text-align: center;
 }

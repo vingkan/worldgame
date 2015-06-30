@@ -6,7 +6,6 @@ function Country(name, color){
 
 Country.prototype.pushPoint = function(point){
 	this.points.push(point);
-	log("Added " + point.toString() + " to " + this.name);
 }
 
 Country.prototype.draw = function(ctx){

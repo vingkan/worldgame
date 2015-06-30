@@ -23,5 +23,25 @@ function clearPoint(){
 }
 
 function viewCountry(){
-	var country = document.getElementById('select-country').value;
+	var name = document.getElementById('select-country').value;
+	var country = map.searchCountryName(name);
+	document.getElementById('country-name').value = country.name;
+	document.getElementById('country-color').value = country.color;
+	var pointSpace = document.getElementById('pointSpace');
+	pointSpace.innerHTML = "";
+	for(var i = 0; i < country.points.length; i++){
+		pointSpace.innerHTML += country.points[i].toHtml(i, country);
+	}
+}
+
+function arrangePointList(){
+	var name = document.getElementById('country-name').value;
+	var country = map.searchCountryName(name);
+	var points = country.points;
+	var indexes = document.getElementsByClassName('pointIndex');
+	var newOrder = [];
+	for(var i = 0; i < indexes.length; i++){
+		newOrder.push(points[indexes[i].value]);
+	}
+	country.points = newOrder;
 }

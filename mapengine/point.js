@@ -18,6 +18,14 @@ Point.prototype.draw = function(ctx){
 	ctx.closePath();
 }
 
+Point.prototype.toHtml = function(index, country){
+	var html = '<div class="pointDiv" id="point' + index + '" draggable="true" ondragstart="drag(event);" style="background: ' + country.color + ';">';
+		html += '<input class="pointIndex" type="text" value="' + index + '">';
+		html += 'Point(' + this.coord.x + ', ' + this.coord.y + ')';
+		html += '</div>';
+	return html;
+}
+
 function connectPoints(points, ctx){
 	ctx.strokeStyle = "blue";
 	ctx.fillStyle = "yellow";

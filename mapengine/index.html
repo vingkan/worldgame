@@ -33,7 +33,7 @@
 
 	<canvas id="map" width="900px" height="600px" background="red"></canvas>
 
-	<div id="toolbar-point">
+	<div class="toolbar" id="toolbar-point">
 		<input id="pointCoord-x" type="number" value="0">
 		<input id="pointCoord-y" type="number" value="0">
 		<input type="button" value="&#10004" onclick="addPoint();" style="background: green;">
@@ -44,13 +44,16 @@
 		<input type="button" value="&#920" onclick="viewCountry();" style="background: blue;">
 	</div>
 	
-	<div class="toolbar" id="toolbar-country">
+	<div class="toolbar" id="toolbar-country" style="height: 120px;" ondrop="drop(event);" ondragover="allowDrop(event);">
 		<input type="text" id="country-name" value="Name">
 		<input type="color" id="country-color" value="#000000">
+		<input type="button" value="&#926" onclick="arrangePointList();" style="background: #1A1A1A;">
+		<div id="pointSpace" ondrop="drop(event);" ondragover="allowDrop(event);">
 
+		</div>
 	</div>
 
-	<textarea class="toolbar" id="console"></textarea>
+	<textarea id="console"></textarea>
 
 	<h1>Heading 1</h1>
 	<h2>Heading 2</h2>
@@ -73,8 +76,8 @@
 	var point3 = new Point(230,170);
 	var point4 = new Point(20,70);
 
-	map.pushCountry(new Country("Drakhazia", "red"));
-	map.pushCountry(new Country("Angor", "blue"));
+	map.pushCountry(new Country("Drakhazia", "#FF0000"));
+	map.pushCountry(new Country("Angor", "#0000FF"));
 
 	map.countries[0].pushPoint(point1);
 	map.countries[0].pushPoint(point2);
