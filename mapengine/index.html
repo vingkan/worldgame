@@ -9,13 +9,14 @@
 </style>
 
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="toolbarStyle.css">
 
 <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="canvasMap.js"></script>
+<script type="text/javascript" src="toolbarScript.js"></script>
 <script type="text/javascript" src="country.js"></script>
-<script type="text/javascript" src="node.js"></script>
+<script type="text/javascript" src="point.js"></script>
 <script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript" src="init.js"></script>
 
 </head>
@@ -33,12 +34,23 @@
 	<canvas id="map" width="900px" height="600px" background="red"></canvas>
 
 	<div id="toolbar-point">
+		<input id="pointCoord-x" type="number" value="0">
+		<input id="pointCoord-y" type="number" value="0">
+		<input type="button" value="&#10004" onclick="addPoint();" style="background: green;">
+		<input type="button" value="&#10006" onclick="clearPoint();" style="background: red;">
+		<select id="select-country">
+			<option value="">Country</option>
+		</select>
+		<input type="button" value="&#920" onclick="viewCountry();" style="background: blue;">
 	</div>
 	
-	<div id="toolbar-country">
+	<div class="toolbar" id="toolbar-country">
+		<input type="text" id="country-name" value="Name">
+		<input type="color" id="country-color" value="#000000">
+
 	</div>
 
-	<textarea id="console"></textarea>
+	<textarea class="toolbar" id="console"></textarea>
 
 	<h1>Heading 1</h1>
 	<h2>Heading 2</h2>
@@ -53,25 +65,29 @@
 
 	drawGrid(canvas, 50);
 
+	var canvas = document.getElementById('map');
+		canvas.addEventListener('click', updateCoords);
+
 	var point1 = new Point(30,500);
 	var point2 = new Point(500,200);
 	var point3 = new Point(230,170);
 	var point4 = new Point(20,70);
 
-	var country1 = new Country("Drakhazia", "red");
-	country1.pushPoint(point1);
-	country1.pushPoint(point2);
-	country1.pushPoint(point3);
-	country1.pushPoint(point4);
+	map.pushCountry(new Country("Drakhazia", "red"));
+	map.pushCountry(new Country("Angor", "blue"));
 
-	var country2 = new Country("Angor", "blue");
-	country2.pushPoint(point3);
-	country2.pushPoint(point1);
-	country2.pushPoint(point2);
-	country2.pushPoint(point4);
+	map.countries[0].pushPoint(point1);
+	map.countries[0].pushPoint(point2);
+	map.countries[0].pushPoint(point3);
+	map.countries[0].pushPoint(point4);
 
-	country1.draw(ctx);
-	country2.draw(ctx);
+	map.countries[1].pushPoint(point3);
+	map.countries[1].pushPoint(point1);
+	map.countries[1].pushPoint(point2);
+	map.countries[1].pushPoint(point4);
+
+	map.countries[0].draw(ctx);
+	map.countries[1].draw(ctx);
 
 
 </script>

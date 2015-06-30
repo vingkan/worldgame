@@ -1,3 +1,5 @@
+//CURRENTLY NOT IN USE BY PROGRAM, NOT LOADED IN HTML
+
 function getPosition(event){
 	var canvas = document.getElementById('map');
 	var x = event.x;

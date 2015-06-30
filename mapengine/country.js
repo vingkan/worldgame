@@ -22,3 +22,9 @@ Country.prototype.draw = function(ctx){
 	ctx.closePath();
 
 }
+
+Country.prototype.addOption = function(){
+	var html = '<option value="' + this.name + '">' + this.name + '</option>';
+	var selector = document.getElementById('select-country');
+	selector.innerHTML += html;
+}
