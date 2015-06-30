@@ -17,18 +17,18 @@ function drawGrid(canvas, interval){
 		ctx.stroke();
 	}
 	ctx.closePath();
-	//HORIZONTAL NODES
+	//HORIZONTAL POINTS
 	for(var x = 0; x <= canvas.width; x += interval){
-		var startNode = new Node(x, 0);
-		var endNode = new Node(x, canvas.height);
-		startNode.draw(ctx);
-		endNode.draw(ctx);
+		var startPoint = new Point(x, 0);
+		var endPoint = new Point(x, canvas.height);
+		startPoint.draw(ctx);
+		endPoint.draw(ctx);
 	}
-	//VERTICAL NODES
+	//VERTICAL POINTS
 	for(var y = 0; y <= canvas.height; y += interval){
-		var startNode = new Node(0, y);
-		var endNode = new Node(canvas.width, y);
-		startNode.draw(ctx);
-		endNode.draw(ctx);
+		var startPoint = new Point(0, y);
+		var endPoint = new Point(canvas.width, y);
+		startPoint.draw(ctx);
+		endPoint.draw(ctx);
 	}
 }

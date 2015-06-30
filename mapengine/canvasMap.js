@@ -1,10 +1,10 @@
 function CanvasMap(id){
 	this.id = id;
-	this.nodes = [];
+	this.points = [];
 
 }
 
-CanvasMap.prototype.pushNode = function(node){
-	this.nodes.push(node);
-	log(node.toString());
+CanvasMap.prototype.pushPoint = function(point){
+	this.points.push(point);
+	log(point.toString());
 }

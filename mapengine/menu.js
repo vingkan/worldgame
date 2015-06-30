@@ -4,12 +4,12 @@ function getPosition(event){
 	var y = event.y;
 	x -= canvas.offsetLeft;
 	y -= canvas.offsetTop;
-	document.getElementById('nodeCoord-x').value = x;
-	document.getElementById('nodeCoord-y').value = y;
-	document.getElementById('nodeCoord').style.display = 'block';
+	document.getElementById('pointCoord-x').value = x;
+	document.getElementById('pointCoord-y').value = y;
+	document.getElementById('pointCoord').style.display = 'block';
 }
 
-function newNode(){
+function newPoint(){
 	log("called");
 	$('map').one('mousedown', function(){
 		var canvas = document.getElementById('map');
@@ -17,22 +17,22 @@ function newNode(){
 		var y = event.y;
 		x -= canvas.offsetLeft;
 		y -= canvas.offsetTop;
-		document.getElementById('nodeCoord-x').value = x;
-		document.getElementById('nodeCoord-y').value = y;
-		document.getElementById('nodeCoord').style.display = 'block';
+		document.getElementById('pointCoord-x').value = x;
+		document.getElementById('pointCoord-y').value = y;
+		document.getElementById('pointCoord').style.display = 'block';
 	});
 }
 
-function addNode(){
-	var x = document.getElementById('nodeCoord-x').value;
-	var y = document.getElementById('nodeCoord-y').value;
-	var node = new Node(x, y, map);
-	node.draw(ctx);
-	closeNode();
+function addPoint(){
+	var x = document.getElementById('pointCoord-x').value;
+	var y = document.getElementById('pointCoord-y').value;
+	var point = new Point(x, y, map);
+	point.draw(ctx);
+	closePoint();
 }
 
-function closeNode(){
-	document.getElementById('nodeCoord-x').value = 0;
-	document.getElementById('nodeCoord-y').value = 0;
-	document.getElementById('nodeCoord').style.display = 'none';
+function closePoint(){
+	document.getElementById('pointCoord-x').value = 0;
+	document.getElementById('pointCoord-y').value = 0;
+	document.getElementById('pointCoord').style.display = 'none';
 }

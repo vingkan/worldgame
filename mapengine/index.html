@@ -25,21 +25,18 @@
 	<div id="header">
 		<div id="menu">
 			<h1 style="width: 265px; float: left;">World Game Map Engine</h1>
-			<div class="button" id="button-node" onclick="newNode()">
-				Add Node
-				<div id="nodeCoord" style="display: none;">
-					<input id="nodeCoord-x" type="text" value="0">
-					<input id="nodeCoord-y" type="text" value="0">
-					<input type="button" value="Add" style="width: 65px;" onclick="addNode();">
-					<input type="button" value="Close" style="width: 65px;" onclick="closeNode();">
-				</div>
-			</div>
 		</div>
 	</div>
 
 	<div class="spacer" style="height: 60px;"></div>
 
 	<canvas id="map" width="900px" height="600px" background="red"></canvas>
+
+	<div id="toolbar-point">
+	</div>
+	
+	<div id="toolbar-country">
+	</div>
 
 	<textarea id="console"></textarea>
 
@@ -56,24 +53,22 @@
 
 	drawGrid(canvas, 50);
 
-	//connectNodes([node1, node2, node3], ctx);
-
-	var node1 = new Node(30,500);
-	var node2 = new Node(500,200);
-	var node3 = new Node(230,170);
-	var node4 = new Node(20,70);
+	var point1 = new Point(30,500);
+	var point2 = new Point(500,200);
+	var point3 = new Point(230,170);
+	var point4 = new Point(20,70);
 
 	var country1 = new Country("Drakhazia", "red");
-	country1.pushNode(node1);
-	country1.pushNode(node2);
-	country1.pushNode(node3);
-	country1.pushNode(node4);
+	country1.pushPoint(point1);
+	country1.pushPoint(point2);
+	country1.pushPoint(point3);
+	country1.pushPoint(point4);
 
 	var country2 = new Country("Angor", "blue");
-	country2.pushNode(node3);
-	country2.pushNode(node1);
-	country2.pushNode(node2);
-	country2.pushNode(node4);
+	country2.pushPoint(point3);
+	country2.pushPoint(point1);
+	country2.pushPoint(point2);
+	country2.pushPoint(point4);
 
 	country1.draw(ctx);
 	country2.draw(ctx);
