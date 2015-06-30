@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="canvasMap.js"></script>
 <script type="text/javascript" src="country.js"></script>
 <script type="text/javascript" src="node.js"></script>
@@ -59,16 +60,23 @@
 
 	var node1 = new Node(30,500);
 	var node2 = new Node(500,200);
-	var node3 = new Node(60,150);
+	var node3 = new Node(230,170);
 	var node4 = new Node(20,70);
 
-	var country = new Country("Drakhazia", "red");
-	country.pushNode(node1);
-	country.pushNode(node2);
-	country.pushNode(node3);
-	country.pushNode(node4);
+	var country1 = new Country("Drakhazia", "red");
+	country1.pushNode(node1);
+	country1.pushNode(node2);
+	country1.pushNode(node3);
+	country1.pushNode(node4);
 
-	country.draw(ctx);
+	var country2 = new Country("Angor", "blue");
+	country2.pushNode(node3);
+	country2.pushNode(node1);
+	country2.pushNode(node2);
+	country2.pushNode(node4);
+
+	country1.draw(ctx);
+	country2.draw(ctx);
 
 
 </script>
