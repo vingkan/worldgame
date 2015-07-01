@@ -6,9 +6,21 @@ function updateCoords(event){
 	y -= canvas.offsetTop;
 	document.getElementById('pointCoord-x').value = x;
 	document.getElementById('pointCoord-y').value = y;
-	var point = new Point(x, y);
-	point.draw(ctx);
-	//setTimeout(function(){updateMap(true);}, 1000);
+	var newPoint = true;
+	for(var i = 0; i < map.tempPoints.length; i++){
+		if(map.tempPoints[i].draggablePoint(x, y)){
+			map.tempPoints.splice(i, 1);
+			newPoint = false;
+			break;
+		}
+	}
+	if(newPoint){
+		var point = new Point(x, y);
+		point.draw(ctx);
+		map.pushTempPoint(point);
+		//setTimeout(function(){updateMap(true);}, 1000);
+	}
+	map.drawTempPoints();
 }
 
 function addPoint(){
@@ -29,6 +41,7 @@ function clearPoint(){
 }
 
 function viewCountry(){
+	map.tempPoints = [];
 	var name = document.getElementById('select-country').value;
 	var country = map.searchCountry(name);
 	document.getElementById('country-name').value = country.name;
@@ -42,6 +55,7 @@ function viewCountry(){
 	pointSpace.innerHTML = "";
 	for(var i = 0; i < country.points.length; i++){
 		pointSpace.innerHTML += country.points[i].toHtml(i, country);
+		map.pushTempPoint(country.points[i]);
 	}
 }
 

@@ -2,12 +2,23 @@ function CanvasMap(id){
 	this.id = id;
 	this.points = [];
 	this.countries = [];
-
+	this.tempPoints = [];
 }
 
 CanvasMap.prototype.pushPoint = function(point){
 	this.points.push(point);
 	//log(point.toString());
+}
+
+CanvasMap.prototype.pushTempPoint = function(point){
+	this.tempPoints.push(point);
+}
+
+CanvasMap.prototype.drawTempPoints = function(point){
+	updateMap(true);
+	for(var i = 0; i < this.tempPoints.length; i++){
+		this.tempPoints[i].draw(ctx);
+	}
 }
 
 CanvasMap.prototype.pushCountry = function(country){
