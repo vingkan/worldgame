@@ -23,16 +23,18 @@ div.toolbar input[type="number"]{
 }
 
 div.toolbar input[type="text"]{
-
+	width: 190px;
+	padding-left: 10px;
 }
 
 div.toolbar input[type="color"]{
 	width: 100px;
+	margin-top: -10px;
 }
 
 div.toolbar input[type="button"]{
 	color: white;
-	width: 30px;
+	padding: 0 10px;
 }
 
 div.toolbar select{
@@ -42,7 +44,7 @@ div.toolbar select{
 div#pointSpace{
 	margin: 10px 0 0 0;
 	width: 855px;
-	height: 40px;
+	height: 35px;
 	padding: 5px;
 	background: #1A1A1A;
 }
@@ -51,21 +53,30 @@ div.pointDiv{
 	float: left;
 	background: purple;
 	margin: 5px;
-	height: 30px;
-	line-height: 30px;
-	width: 150px;
-	font-size: 15px;
+	height: 25px;
+	line-height: 25px;
+	width: 107.5px;
+	font-size: 10px;
 	color: white;
 	font-family: "Open Sans";
+	padding: 0 0 0 25px;
 }
 
 div.pointDiv input[type="text"]{
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	padding: 0;
-	margin: 0;
+	position: absolute;
+	margin: 0 0 0 -25px;
 	background: transparent;
 	color: white;
 	font-weight: bold;
 	text-align: center;
+}
+
+div.pointDiv span{
+	float: right;
+	color: #1A1A1A;
+	margin-right: 10px;
+	font-weight: bold;
 }

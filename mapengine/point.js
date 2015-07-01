@@ -18,10 +18,18 @@ Point.prototype.draw = function(ctx){
 	ctx.closePath();
 }
 
+function removePoint(id){
+	var parent = document.getElementById('pointSpace');
+	var child = document.getElementById(id);
+	parent.removeChild(child);
+	updateMap(false);
+}
+
 Point.prototype.toHtml = function(index, country){
 	var html = '<div class="pointDiv" id="point' + index + '" draggable="true" ondragstart="drag(event);" style="background: ' + country.color + ';">';
 		html += '<input class="pointIndex" type="text" value="' + index + '">';
-		html += 'Point(' + this.coord.x + ', ' + this.coord.y + ')';
+		html += 'Point (' + this.coord.x + ', ' + this.coord.y + ')';
+		html += '<span onclick="removePoint(&#39point' + index + '&#39);">x</span>'
 		html += '</div>';
 	return html;
 }

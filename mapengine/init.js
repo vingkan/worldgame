@@ -10,9 +10,10 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    updateMap(false);
 }
 
-function drawGrid(canvas, interval){
+/*function drawGrid(canvas, interval){
 	var ctx = canvas.getContext('2d');
 	ctx.lineWidth = "0.5";
 	ctx.strokeStyle = "white";
@@ -45,5 +46,4 @@ function drawGrid(canvas, interval){
 		startPoint.draw(ctx);
 		endPoint.draw(ctx);
 	}
-}
-
+}*/
