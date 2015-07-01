@@ -12,8 +12,6 @@
 
 <script type="text/javascript" src="canvasMap.js"></script>
 <script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="menu.js"></script>
-<script type="text/javascript" src="init.js"></script>
 
 </head>
 
@@ -42,9 +40,7 @@
 	var canvas = document.getElementById('map');
 	var ctx = canvas.getContext('2d');
 
-	drawGrid(canvas, 50);
-
-	//connectNodes([node1, node2, node3], ctx);
+	drawGrid(50, false);
 
 </script>
 
