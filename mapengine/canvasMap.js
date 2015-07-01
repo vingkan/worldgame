@@ -95,6 +95,7 @@ function getPosition(event){
 function clickCanvas(event){
 	var coord = getPosition(event);
 	var point = new Point(coord.x, coord.y);
+		toolbar.checkContact(coord.x, coord.y);
 		toolbar.pushTempPoint(point);
 		point.draw();
 }

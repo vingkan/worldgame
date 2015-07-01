@@ -21,9 +21,16 @@ Toolbar.prototype.showPoints = function(){
 Toolbar.prototype.checkContact = function(x, y){
 	for(var i = 0; i < this.tempPoints.length; i++){
 		if(this.tempPoints[i].isDraggable(x, y)){
+			resetPointMenu()
 			this.tempPoints[i].openMenu();
 		}
 	}
+}
+
+function resetPointMenu(){
+	var pointMenu = document.getElementById('pointMenu');
+		pointMenu.style.marginTop = '-435px';
+		pointMenu.style.marginLeft = '20px';
 }
 
 function viewCountry(){

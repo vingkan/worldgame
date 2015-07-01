@@ -41,5 +41,7 @@ Point.prototype.isDraggable = function(x, y){
 }
 
 Point.prototype.openMenu = function(){
-	
+	var pointMenu = document.getElementById('pointMenu');
+		pointMenu.style.marginTop = (-435 + this.y) + 'px';
+		pointMenu.style.marginLeft = (20 + this.x) + 'px';
 }
