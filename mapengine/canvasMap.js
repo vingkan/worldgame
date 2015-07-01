@@ -22,6 +22,12 @@ CanvasMap.prototype.checkDraggablePoints = function(x, y){
 	}
 }
 
+CanvasMap.prototype.draw = function(){
+	for(var i = 0; i < this.countries.length; i++){
+		this.countries[i].draw();
+	}
+}
+
 function drawGrid(interval, nodes){
 	ctx.lineWidth = "0.5";
 	ctx.strokeStyle = "white";

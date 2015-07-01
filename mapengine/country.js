@@ -7,3 +7,7 @@ function Country(name, color, pointsArray){
 Country.prototype.pushPoint = function(point){
 	this.points.push(point);
 }
+
+Country.prototype.draw = function(){
+	
+}
