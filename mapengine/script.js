@@ -12,6 +12,9 @@ function Coordinate(x, y){
 	this.y = y || 0;	
 }
 
+Coordinate.prototype.toString = function(){
+	return "(" + this.x + ", " + this.y + ")";
+}
 
 /*function connectPoints(points, ctx){
 	ctx.strokeStyle = "blue";

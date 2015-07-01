@@ -10,8 +10,11 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<script type="text/javascript" src="canvasMap.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="point.js"></script>
+<script type="text/javascript" src="country.js"></script>
+<script type="text/javascript" src="canvasMap.js"></script>
+<script type="text/javascript" src="toolbar.js"></script>
 
 </head>
 
@@ -38,9 +41,11 @@
 
 	var map = new CanvasMap('map');
 	var canvas = document.getElementById('map');
+		canvas.addEventListener('click', clickCanvas);
 	var ctx = canvas.getContext('2d');
+		drawGrid(50, false);
 
-	drawGrid(50, false);
+	var toolbar = new Toolbar();
 
 </script>
 

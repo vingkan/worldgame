@@ -1,12 +1,25 @@
-function CanvasMap(id){
+function CanvasMap(id, countryList){
 	this.id = id;
-	this.countries = [];
-
+	this.countries = countryList || [];
 }
 
-CanvasMap.prototype.pushNode = function(node){
-	this.nodes.push(node);
-	log(node.toString());
+CanvasMap.prototype.pushCountry = function(country){
+	this.countries.push(country);
+}
+
+CanvasMap.prototype.getCountryByIndex = function(index){
+	return this.countries[index];
+}
+
+CanvasMap.prototype.checkDraggablePoints = function(x, y){
+	for(var k = 0; k < this.countries.length; k++){
+		for(var i = 0; i < this.country[k].points.length; i++){
+			if(this.country[k].points[i].isDraggable(x, y)){
+				this.country[k].points.splice(i, 1);
+				break;
+			}
+		}		
+	}
 }
 
 function drawGrid(interval, nodes){
@@ -43,4 +56,21 @@ function drawGrid(interval, nodes){
 			endNode.draw(ctx);
 		}
 	}
+}
+
+function getPosition(event){
+	var x = event.x;
+	var y = event.y;
+	
+	x -= canvas.offsetLeft;
+	y -= canvas.offsetTop;
+	
+	return new Coordinate(x, y);
+}
+
+function clickCanvas(event){
+	var coord = getPosition(event);
+	var point = new Point(coord.x, coord.y);
+		toolbar.pushTempPoint(point);
+		point.draw();
 }
