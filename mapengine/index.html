@@ -31,7 +31,7 @@
 
 	<div class="spacer" style="height: 60px;"></div>
 
-	<canvas id="map" width="900px" height="600px" background="red"></canvas>
+	<canvas id="map" width="900px" height="400px" background="red"></canvas>
 
 	<div class="toolbar" id="toolbar-point">
 		<input id="pointCoord-x" type="number" value="0">
@@ -63,28 +63,22 @@
 
 	var map = new CanvasMap('map');
 	var canvas = document.getElementById('map');
+		canvas.addEventListener('click', updateCoords);
 	var ctx = canvas.getContext('2d');
 
 	map.drawGrid(50, false);
 
-	var canvas = document.getElementById('map');
-		canvas.addEventListener('click', updateCoords);
-
 	map.pushCountry(new Country("Drakhazia", "#FF0000"));
+
+	map.countries[0].pushPoint(new Point(10, 200));
+	map.countries[0].pushPoint(new Point(200, 320));
+	map.countries[0].pushPoint(new Point(350, 80));
+
 	map.pushCountry(new Country("Angor", "#0000FF"));
 
-	map.countries[0].pushPoint(new Point(20, 50));
-	map.countries[0].pushPoint(new Point(80, 180));
-	map.countries[0].pushPoint(new Point(180, 130));
-	map.countries[0].pushPoint(new Point(200, 20));
-
-	map.countries[1].pushPoint(new Point(200, 200));
-	map.countries[1].pushPoint(new Point(250, 350));
-	map.countries[1].pushPoint(new Point(370, 500));
-	map.countries[1].pushPoint(new Point(180, 400));
-
-	map.countries[0].draw(ctx);
-	map.countries[1].draw(ctx);
+	map.countries[1].pushPoint(new Point(420, 60));
+	map.countries[1].pushPoint(new Point(520, 210));
+	map.countries[1].pushPoint(new Point(370, 320));
 
 	updateMap(true);
 
