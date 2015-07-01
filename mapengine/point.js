@@ -2,7 +2,7 @@ function Point(x, y, color, radius){
 	this.x = x;
 	this.y = y;
 	this.color = color || '#1A1A1A';
-	this.radius = radius || 5;
+	this.radius = radius || 10;
 }
 
 Point.prototype.toString = function(){

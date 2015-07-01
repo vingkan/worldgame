@@ -10,7 +10,7 @@ CanvasMap.prototype.pushCountry = function(country){
 
 CanvasMap.prototype.loadOptions = function(){
 	var selector = document.getElementById('country-select');
-	selector.innerHTML = '<option value="null">Country</option>'
+	selector.innerHTML = '<option value="-1">All Countries</option>';
 	var option = '';
 	for(var i = 0; i < this.countries.length; i++){
 		option = '<option value="' + i + '">' + this.countries[i].name + '</option>'
@@ -38,10 +38,12 @@ function resetCanvas(){
 }
 
 CanvasMap.prototype.draw = function(){
-	for(var i = 0; i < this.countries.length; i++){
-		this.countries[i].draw();
+	if(this.countries.length > 0){
+		for(var i = 0; i < this.countries.length; i++){
+			this.countries[i].draw();
+		}
+		drawGrid(50, false);
 	}
-	drawGrid(50, false);
 }
 
 function drawGrid(interval, nodes){
