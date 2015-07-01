@@ -30,6 +30,12 @@
 
 	<canvas id="map" width="900px" height="400px" background="red"></canvas>
 
+	<div class="toolbar">
+		<select id="country-select" onchange="viewCountry();">
+			<option value="null">Country</option>
+		</select>
+	</div>
+
 	<textarea id="console"></textarea>
 
 	<h1>Heading 1</h1>
@@ -43,15 +49,22 @@
 	var canvas = document.getElementById('map');
 		canvas.addEventListener('click', clickCanvas);
 	var ctx = canvas.getContext('2d');
-		drawGrid(50, false);
 
 	var toolbar = new Toolbar();
 
-	map.pushCountry(new Country("Angor", "#0000FF", [
-		new Point(30, 100),
-		new Point(50, 400),
-		new Point(60, 250),
+	map.pushCountry(new Country("Drakhazia", "#FF0000", [
+			new Point(450, 350),
+			new Point(250, 280),
+			new Point(560, 80),
 		]));
+
+	map.pushCountry(new Country("Angor", "#0000FF", [
+			new Point(30, 80),
+			new Point(400, 120),
+			new Point(60, 250),
+		]));
+
+	map.draw();
 
 </script>
 

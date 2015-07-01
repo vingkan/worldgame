@@ -5,6 +5,17 @@ function CanvasMap(id, countryList){
 
 CanvasMap.prototype.pushCountry = function(country){
 	this.countries.push(country);
+	this.loadOptions();
+}
+
+CanvasMap.prototype.loadOptions = function(){
+	var selector = document.getElementById('country-select');
+	selector.innerHTML = '<option value="null">Country</option>'
+	var option = '';
+	for(var i = 0; i < this.countries.length; i++){
+		option = '<option value="' + i + '">' + this.countries[i].name + '</option>'
+		selector.innerHTML += option;
+	}
 }
 
 CanvasMap.prototype.getCountryByIndex = function(index){
@@ -22,10 +33,15 @@ CanvasMap.prototype.checkDraggablePoints = function(x, y){
 	}
 }
 
+function resetCanvas(){
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
 CanvasMap.prototype.draw = function(){
 	for(var i = 0; i < this.countries.length; i++){
 		this.countries[i].draw();
 	}
+	drawGrid(50, false);
 }
 
 function drawGrid(interval, nodes){

@@ -2,7 +2,10 @@ function Toolbar(){
 	this.tempMap = map;
 }
 
-Toolbar.prototype.viewCountry = function(countryIndex){
+function viewCountry(){
+	var index = document.getElementById('country-select').value;
 	var country = map.getCountryByIndex(index);
-	this.tempMap = new CanvasMap('map', [country]);
+	toolbar.tempMap = new CanvasMap('map', [country]);
+	resetCanvas();
+	toolbar.tempMap.draw();
 }
