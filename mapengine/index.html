@@ -9,6 +9,7 @@
 </style>
 
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="toolbar.css">
 
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript" src="point.js"></script>
@@ -29,6 +30,12 @@
 	<div class="spacer" style="height: 60px;"></div>
 
 	<canvas id="map" width="900px" height="400px" background="red"></canvas>
+
+	<div id="pointMenu">
+		<div id="arrowLeft"></div>
+		<input type="button" value="Move" onclick="">
+		<input type="button" value="&#x274c;" onclick="">
+	</div>
 
 	<div class="toolbar">
 		<select id="country-select" onchange="viewCountry();">

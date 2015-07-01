@@ -39,3 +39,7 @@ Point.prototype.isDraggable = function(x, y){
 	}
 	return draggable;
 }
+
+Point.prototype.openMenu = function(){
+	
+}
