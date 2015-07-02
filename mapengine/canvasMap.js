@@ -101,7 +101,13 @@ function clickCanvas(event){
 	var point = new Point(coord.x, coord.y);
 	var contact = toolbar.checkContact(coord.x, coord.y);
 	if(!contact){
-		toolbar.pushTempPoint(point);
-		point.draw();
+		if(toolbar.moving){
+			var currentIndex = document.getElementById('current-index').value;
+			toolbar.tempPoints.splice(currentIndex, 1, point);
+		}
+		else{
+			toolbar.pushTempPoint(point);
+		}
+		outClick();
 	}
 }
