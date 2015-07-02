@@ -1,7 +1,7 @@
 div#pointMenu{
 	position: absolute;
 	height: 30px;
-	width: 50px;
+	width: 87.5px;
 	margin: -435px 0 0 20px;
 	padding: 0 0 0 5px;
 	background: white;
@@ -24,8 +24,21 @@ div#pointMenu input{
 	width: 20px;
 	line-height: 10px;
 	margin: 5px 0 5px 0px;
-	padding: 5px;
-	color: white;
+	
 	font-family: "Open Sans";
 	font-size: 10px;
+}
+
+div#pointMenu input[type="button"]{
+	padding: 5px;
+	color: white;
+}
+
+div#pointMenu input[type="number"]{
+	background: #CCCCCC;
+	color: #1A1A1A;
+	font-size: 10px;
+	font-weight: bold;
+	width: 30px;
+	padding: 0 0 0 5px;
 }

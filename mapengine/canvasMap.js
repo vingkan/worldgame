@@ -1,6 +1,7 @@
-function CanvasMap(id, countryList){
+function CanvasMap(id, countryList, temporary){
 	this.id = id;
 	this.countries = countryList || [];
+	this.temporary = temporary || false;
 }
 
 CanvasMap.prototype.pushCountry = function(country){
@@ -41,6 +42,9 @@ CanvasMap.prototype.draw = function(){
 	if(this.countries.length > 0){
 		for(var i = 0; i < this.countries.length; i++){
 			this.countries[i].draw();
+			if(this.temporary){
+				this.countries[i].showPoints();
+			}
 		}
 		drawGrid(50, false);
 	}
@@ -95,7 +99,9 @@ function getPosition(event){
 function clickCanvas(event){
 	var coord = getPosition(event);
 	var point = new Point(coord.x, coord.y);
-		toolbar.checkContact(coord.x, coord.y);
+	var contact = toolbar.checkContact(coord.x, coord.y);
+	if(!contact){
 		toolbar.pushTempPoint(point);
 		point.draw();
+	}
 }
