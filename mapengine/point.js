@@ -3,6 +3,7 @@ function Point(x, y, color, radius){
 	this.y = y;
 	this.color = color || '#1A1A1A';
 	this.radius = radius || 10;
+	this.fill = false;
 }
 
 Point.prototype.toString = function(){
@@ -12,8 +13,12 @@ Point.prototype.toString = function(){
 Point.prototype.draw = function(){
 	ctx.beginPath();
 	ctx.strokeStyle = this.color;
+	ctx.fillStyle = this.color;
 	ctx.arc(this.x, this.y, this.radius, deg(0), deg(360), false);
 	ctx.stroke();
+	if(this.fill){
+		ctx.fill();
+	}
 	ctx.closePath();
 }
 
@@ -40,8 +45,36 @@ Point.prototype.isDraggable = function(x, y){
 	return draggable;
 }
 
-Point.prototype.openMenu = function(){
+Point.prototype.openMenu = function(tempId){
 	var pointMenu = document.getElementById('pointMenu');
 		pointMenu.style.marginTop = (-435 + this.y) + 'px';
 		pointMenu.style.marginLeft = (20 + this.x) + 'px';
+	var forward = null;
+	var backward = null;
+	if(tempId > 0 && tempId < (toolbar.tempPoints.length-1)){
+		forward = toolbar.tempPoints[tempId+1];
+		backward = toolbar.tempPoints[tempId-1];
+	}
+	else if(tempId == 0){
+		forward = toolbar.tempPoints[tempId+1];
+		backward = toolbar.tempPoints[toolbar.tempPoints.length-1];
+	}
+	else if(tempId == toolbar.tempPoints.length-1){
+		forward = toolbar.tempPoints[0];
+		backward = toolbar.tempPoints[tempId-1];
+	}
+	//SET
+	forward.color = 'blue';
+	forward.fill = true;
+	backward.color = 'yellow';
+	backward.fill = true;
+	resetCanvas();
+	toolbar.tempMap.draw();
+	//RESET
+	forward.color = '#1A1A1A';
+	forward.fill = false;
+	backward.color = '#1A1A1A';
+	backward.fill = false;
+	//DEFAULT TO MOVE POINT
+	moveCurrent();
 }

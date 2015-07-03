@@ -20,7 +20,7 @@ Toolbar.prototype.checkContact = function(x, y){
 		if(this.tempPoints[i].isDraggable(x, y)){
 			contact = true;
 			resetPointMenu()
-			this.tempPoints[i].openMenu();
+			this.tempPoints[i].openMenu(i);
 			var currentIndex = document.getElementById('current-index');
 				currentIndex.value = i;
 			break;
@@ -64,34 +64,44 @@ function moveCurrent(){
 }
 
 function removeCurrent(){
+	toolbar.moving = false;
 	var currentIndex = document.getElementById('current-index').value;
 	toolbar.tempPoints.splice(currentIndex, 1);
 	outClick();
 }
 
 function forwardCurrent(forward){
+	toolbar.moving = false;
 	var currentIndex = document.getElementById('current-index').value;
 	var point = toolbar.tempPoints[currentIndex];
-	var swapWith = toolbar.tempPoints[currentIndex];
-	if(forward && currentIndex < toolbar.tempPoints.length){
-		swapWith = toolbar.tempPoints[currentIndex+1];
-		toolbar.tempPoints.splice(currentIndex, 2, swapWith, point);
-	}
-	if(!forward && currentIndex > 0){
-		swapWith = toolbar.tempPoints[currentIndex-1];
-		toolbar.tempPoints.splice(currentIndex-1, 2, point, swapWith);
-	}
-	else{
-		log("Out of Bounds Error!");
-		if(forward){
-			swapWith = toolbar.tempPoints[0];
-			toolbar.tempPoints.splice(0, 1, point);
-			toolbar.pushTempPoint(swapWith);
+	var swapWith = null;
+	
+	if(forward){
+		if(currentIndex != (toolbar.tempPoints.length-1)){
+			log("Forward and In Bounds");
+			swapWith = toolbar.tempPoints[currentIndex+1];
+			toolbar.tempPoints.splice(currentIndex, 2, swapWith, point);	
 		}
-		if(!forward){
+		else{
+			log("Forward and Out Bounds");
+			swapWith = toolbar.tempPoints[0];
+			toolbar.tempPoints.splice(0, 0, point);
+			toolbar.tempPoints.splice(currentIndex, 1, swapWith);
+			toolbar.tempPoints.splice(0, 1);
+		}
+	}
+	else if(!forward){
+		if(currentIndex != 0){
+			log("Backward and In Bounds");
+			swapWith = toolbar.tempPoints[currentIndex-1];
+			toolbar.tempPoints.splice((currentIndex-1), 2, point, swapWith);
+		}
+		else{
+			log("Backward and Out Bounds");
 			swapWith = toolbar.tempPoints[toolbar.tempPoints.length-1];
-			toolbar.tempPoints.splice(toolbar.tempPoints.length-1, 1, point);
 			toolbar.tempPoints.splice(0, 0, swapWith);
+			toolbar.tempPoints.splice(toolbar.tempPoints.length-1, 1, point);
+			toolbar.tempPoints.splice(0, 1);
 		}
 	}
 	outClick();
