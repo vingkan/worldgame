@@ -98,6 +98,7 @@ function getPosition(event){
 
 function clickCanvas(event){
 	var coord = getPosition(event);
+	checkColor(coord.x, coord.y);
 	var point = new Point(coord.x, coord.y);
 	var contact = toolbar.checkContact(coord.x, coord.y);
 	if(!contact){
@@ -110,4 +111,10 @@ function clickCanvas(event){
 		}
 		outClick();
 	}
+}
+
+function checkColor(x, y){
+	var data = ctx.getImageData(x, y, 1, 1).data;
+	var color = 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')';
+	log(color);
 }
