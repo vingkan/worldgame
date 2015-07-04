@@ -100,6 +100,12 @@ function newCountry(){
 		viewCountry((map.countries.length-1));
 }
 
+function showAllCountries(){
+	var selector = document.getElementById('country-select');
+		selector.value = -1;
+	viewCountry();
+}
+
 function outClick(){
 	toolbar.moving = false;
 	toolbar.tempMap.countries[0].points = toolbar.tempPoints;
