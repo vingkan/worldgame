@@ -92,6 +92,14 @@ function deleteCountry(){
 	}
 }
 
+function newCountry(){
+	map.pushCountry(new Country("New Country", "#000000"));
+	map.loadOptions();
+	var selector = document.getElementById('country-select');
+		selector.value = (map.countries.length-1);
+		viewCountry((map.countries.length-1));
+}
+
 function outClick(){
 	toolbar.moving = false;
 	toolbar.tempMap.countries[0].points = toolbar.tempPoints;
