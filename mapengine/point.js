@@ -22,6 +22,11 @@ Point.prototype.draw = function(){
 	ctx.closePath();
 }
 
+Point.prototype.drawIndex = function(index){
+	ctx.font = "20px Open Sans";
+	ctx.fillText(index, this.x, this.y);
+}
+
 Point.prototype.isDraggable = function(x, y){
 	var draggable = false;
 	//CHECK X BOUNDS

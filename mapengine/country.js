@@ -11,6 +11,7 @@ Country.prototype.pushPoint = function(point){
 Country.prototype.showPoints = function(){
 	for(var i = 0; i < this.points.length; i++){
 		this.points[i].draw();
+		this.points[i].drawIndex(i);
 	}
 }
 

@@ -98,7 +98,9 @@ function getPosition(event){
 
 function clickCanvas(event){
 	var coord = getPosition(event);
-	checkColor(coord.x, coord.y);
+		//COLOR FOR COUNTRY DETECTION
+		checkColor(coord.x, coord.y);
+		//CLOSE NOTE
 	var point = new Point(coord.x, coord.y);
 	var contact = toolbar.checkContact(coord.x, coord.y);
 	if(!contact){

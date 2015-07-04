@@ -16,6 +16,21 @@ Coordinate.prototype.toString = function(){
 	return "(" + this.x + ", " + this.y + ")";
 }
 
+function rotateArray(inputArray, forward){
+	var array = inputArray;
+	if(forward){
+		var last = array[array.length-1];
+		array.splice(0, 0, last);
+		array.splice(array.length-1, 1);
+	}
+	else{
+		var first = array[0];
+		array.push(first);
+		array.splice(0, 1);
+	}
+	return array;
+}
+
 /*function connectPoints(points, ctx){
 	ctx.strokeStyle = "blue";
 	ctx.fillStyle = "yellow";
