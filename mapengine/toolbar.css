@@ -1,7 +1,7 @@
 div#pointMenu{
 	position: absolute;
 	height: 30px;
-	width: 97.5px;
+	width: 72.5px;
 	margin: -435px 0 0 20px;
 	padding: 0 0 0 5px;
 	background: white;
@@ -35,10 +35,47 @@ div#pointMenu input[type="button"]{
 }
 
 div#pointMenu input[type="number"]{
-	background: #CCCCCC;
+	background: transparent;
 	color: #1A1A1A;
 	font-size: 10px;
 	font-weight: bold;
 	width: 30px;
 	padding: 0 0 0 5px;
+}
+
+div.toolbar{
+	width: 880px;
+	margin: 15px;
+	padding: 10px;
+	background: #CCCCCC;
+}
+
+div.toolbar input, select{
+	border: none;
+	outline: none;
+	margin: 10px;
+	padding: 0px;
+	width: 160px;
+	height: 30px;
+	line-height: 30px;
+	font-family: "Open Sans";
+	font-size: 15px;
+}
+
+div.toolbar input[type="text"]{
+	height: 20px;
+	padding: 5px;
+	line-height: 20px;
+}
+
+div.toolbar input[type="color"]{
+	position: absolute;
+}
+
+div.toolbar input[type="button"]{
+	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: white;
+	font-weight: bold;
 }

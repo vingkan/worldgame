@@ -57,6 +57,7 @@ Point.prototype.openMenu = function(tempId){
 	var pointMenu = document.getElementById('pointMenu');
 		pointMenu.style.marginTop = (-435 + this.y) + 'px';
 		pointMenu.style.marginLeft = (20 + this.x) + 'px';
+		pointMenu.style.display = 'block';
 	var forward = null;
 		toolbar.forwardIndex = null;
 		var forwardIndex = null;

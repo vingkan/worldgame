@@ -35,17 +35,22 @@ function resetPointMenu(){
 	var pointMenu = document.getElementById('pointMenu');
 		pointMenu.style.marginTop = '-435px';
 		pointMenu.style.marginLeft = '20px';
+		pointMenu.style.display = 'none';
 }
 
 function viewCountry(){
 	var index = document.getElementById('country-select').value;
 	var name = document.getElementById('country-name');
 	var color = document.getElementById('country-color');
+	var delKey = document.getElementById('country-delete');
 	if(index == -1){
 		resetCanvas();
 		map.draw();
 		name.value = "";
 		color.value = "#000000";
+		name.style.display = 'none';
+		color.style.display = 'none';
+		delKey.style.display = 'none';
 	}
 	else{
 		var country = map.getCountryByIndex(index);
@@ -56,6 +61,9 @@ function viewCountry(){
 		toolbar.tempMap.draw();
 		name.value = country.name;
 		color.value = country.color;
+		name.style.display = 'inline-block';
+		color.style.display = 'inline-block';
+		delKey.style.display = 'inline-block';
 	}
 }
 
@@ -69,6 +77,19 @@ function updateCurrentCountry(){
 	map.loadOptions();
 		document.getElementById('country-select').value = index;
 	outClick();
+}
+
+function deleteCountry(){
+	var index = document.getElementById('country-select').value;
+	if(index != -1){
+		map.countries.splice(index, 1);
+		map.loadOptions();
+		toolbar.moving = false;
+		//CUT FROM OUTCLICK --- toolbar.tempMap.countries[0].points = toolbar.tempPoints;
+		resetCanvas();
+		map.draw();
+		resetPointMenu();
+	}
 }
 
 function outClick(){
