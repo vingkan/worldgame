@@ -31,6 +31,13 @@ function rotateArray(inputArray, forward){
 	return array;
 }
 
+function swapItems(array, index1, index2){
+	var item1 = array[index1];
+	var item2 = array[index2];
+	array.splice(index1, 1, item2);
+	array.splice(index2, 1, item1);
+}
+
 /*function connectPoints(points, ctx){
 	ctx.strokeStyle = "blue";
 	ctx.fillStyle = "yellow";

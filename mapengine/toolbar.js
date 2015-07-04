@@ -2,6 +2,8 @@ function Toolbar(){
 	this.tempMap = map;
 	this.tempPoints = [];
 	this.moving = false;
+	this.forwardIndex = null;
+	this.backwardIndex = null;
 }
 
 Toolbar.prototype.pushTempPoint = function(point){
@@ -21,20 +23,8 @@ Toolbar.prototype.checkContact = function(x, y){
 			contact = true;
 			resetPointMenu();
 			var currentIndex = document.getElementById('current-index');
-			if(i == 0){
-				this.tempPoints = rotateArray(this.tempPoints, true);
-				this.tempPoints[i+1].openMenu(i+1);
-					currentIndex.value = (i+1);
-			}
-			else if(i == (this.tempPoints.length-1)){
-				this.tempPoints = rotateArray(this.tempPoints, true);
-				this.tempPoints[i-1].openMenu(i-1);
-					currentIndex.value = (i-1);
-			}
-			else{
-				this.tempPoints[i].openMenu(i);
-					currentIndex.value = i;
-			}
+				currentIndex.value = i;
+			this.tempPoints[i].openMenu(i);
 			break;
 		}
 	}
@@ -85,15 +75,11 @@ function removeCurrent(){
 function forwardCurrent(forward){
 	toolbar.moving = false;
 	var currentIndex = document.getElementById('current-index').value;
-	var point = toolbar.tempPoints[currentIndex];
-	var swapWith = null;
 	if(forward){
-		swapWith = toolbar.tempPoints[currentIndex+1];
-		toolbar.tempPoints.splice(currentIndex, 2, swapWith, point);	
+		swapItems(toolbar.tempPoints, currentIndex, toolbar.forwardIndex);
 	}
 	else if(!forward){
-		swapWith = toolbar.tempPoints[currentIndex-1];
-		toolbar.tempPoints.splice((currentIndex-1), 2, point, swapWith);
+		swapItems(toolbar.tempPoints, currentIndex, toolbar.backwardIndex);
 	}
 	outClick();
 }

@@ -23,8 +23,11 @@ Point.prototype.draw = function(){
 }
 
 Point.prototype.drawIndex = function(index){
-	ctx.font = "20px Open Sans";
-	ctx.fillText(index, this.x, this.y);
+	var fontSize  = 15;
+	var xOff = nameOffset(index + "", fontSize);
+	var yOff = Math.round(fontSize / 3);
+	ctx.font = fontSize + "px Open Sans";
+	ctx.fillText(index, this.x - xOff, this.y + yOff);
 }
 
 Point.prototype.isDraggable = function(x, y){
@@ -55,24 +58,36 @@ Point.prototype.openMenu = function(tempId){
 		pointMenu.style.marginTop = (-435 + this.y) + 'px';
 		pointMenu.style.marginLeft = (20 + this.x) + 'px';
 	var forward = null;
+		toolbar.forwardIndex = null;
+		var forwardIndex = null;
 	var backward = null;
+		toolbar.backwardIndex = null;
+		var backwardIndex = null;
 	if(tempId > 0 && tempId < (toolbar.tempPoints.length-1)){
 		forward = toolbar.tempPoints[tempId+1];
+			forwardIndex = (tempId+1);
 		backward = toolbar.tempPoints[tempId-1];
+			backwardIndex = (tempId-1);
 	}
 	else if(tempId == 0){
 		forward = toolbar.tempPoints[tempId+1];
+			forwardIndex = (tempId+1);
 		backward = toolbar.tempPoints[toolbar.tempPoints.length-1];
+			backwardIndex = (toolbar.tempPoints.length-1);
 	}
 	else if(tempId == toolbar.tempPoints.length-1){
 		forward = toolbar.tempPoints[0];
+			forwardIndex = (0);
 		backward = toolbar.tempPoints[tempId-1];
+			backwardIndex = (tempId-1);
 	}
 	//SET
 	forward.color = 'blue';
 	forward.fill = true;
+	toolbar.forwardIndex = forwardIndex;
 	backward.color = 'yellow';
 	backward.fill = true;
+	toolbar.backwardIndex = backwardIndex;
 	resetCanvas();
 	toolbar.tempMap.draw();
 	//RESET
