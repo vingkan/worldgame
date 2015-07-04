@@ -89,7 +89,7 @@ canvas#map{
 	background: #CCCCCC;
 }
 
-textarea#console{
+textarea.terminal{
 	margin: 15px;
 	padding: 10px;
 	width: 880px;
