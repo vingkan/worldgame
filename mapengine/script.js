@@ -38,19 +38,17 @@ function swapItems(array, index1, index2){
 	array.splice(index2, 1, item1);
 }
 
-/*function connectPoints(points, ctx){
-	ctx.strokeStyle = "blue";
-	ctx.fillStyle = "yellow";
-	ctx.lineWidth = "1";
-	ctx.beginPath();
-	var i = 0;
-	while(i < points.length - s1){
-		ctx.moveTo(points[i].coord.x, points[i].coord.y);
-		ctx.lineTo(points[i+1].coord.x, points[i+1].coord.y);
-		i++
-	}
-	ctx.lineTo(points[0].coord.x, points[0].coord.y);
-	ctx.fill();
-	ctx.stroke();
-	ctx.closePath();
-}*/
+/*
+* LINK: http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+* componentToHex()
+* rgbToHex()
+*/
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}

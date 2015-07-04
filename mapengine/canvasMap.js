@@ -96,27 +96,44 @@ function getPosition(event){
 	return new Coordinate(x, y);
 }
 
+CanvasMap.prototype.checkColorContact = function(color){
+	var contact = false;
+	for(var i = 0; i < this.countries.length; i++){
+		log(color + " | " + this.countries[i].color);
+		if(color == this.countries[i].color){
+			contact = true;
+			log("Color Contact!");
+		}
+	}
+	return contact;
+}
+
 function clickCanvas(event){
 	var coord = getPosition(event);
-		//COLOR FOR COUNTRY DETECTION
-		checkColor(coord.x, coord.y);
-		//CLOSE NOTE
-	var point = new Point(coord.x, coord.y);
-	var contact = toolbar.checkContact(coord.x, coord.y);
-	if(!contact){
-		if(toolbar.moving){
-			var currentIndex = document.getElementById('current-index').value;
-			toolbar.tempPoints.splice(currentIndex, 1, point);
+	/*var color = checkColor(coord.x, coord.y);
+	var touchCountry = map.checkColorContact(color);*/
+	var select = document.getElementById('country-select').value;
+	if(select != -1){
+		var point = new Point(coord.x, coord.y);
+		var contact = toolbar.checkContact(coord.x, coord.y);
+		if(!contact){
+			if(toolbar.moving){
+				var currentIndex = document.getElementById('current-index').value;
+				toolbar.tempPoints.splice(currentIndex, 1, point);
+			}
+			else{
+				toolbar.pushTempPoint(point);
+			}
+			outClick();
 		}
-		else{
-			toolbar.pushTempPoint(point);
-		}
-		outClick();
 	}
 }
 
 function checkColor(x, y){
 	var data = ctx.getImageData(x, y, 1, 1).data;
 	var color = 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')';
-	log(color);
+	//log(color);
+	var hex = rgbToHex(data[0], data[1], data[2]);
+	log(hex);
+	return hex;
 }
