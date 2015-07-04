@@ -39,9 +39,13 @@ function resetPointMenu(){
 
 function viewCountry(){
 	var index = document.getElementById('country-select').value;
+	var name = document.getElementById('country-name');
+	var color = document.getElementById('country-color');
 	if(index == -1){
 		resetCanvas();
 		map.draw();
+		name.value = "";
+		color.value = "#000000";
 	}
 	else{
 		var country = map.getCountryByIndex(index);
@@ -50,7 +54,21 @@ function viewCountry(){
 		toolbar.pushCountryPoints(country);
 		resetCanvas();
 		toolbar.tempMap.draw();
+		name.value = country.name;
+		color.value = country.color;
 	}
+}
+
+function updateCurrentCountry(){
+	var index = document.getElementById('country-select').value;
+	var name = document.getElementById('country-name');
+	var color = document.getElementById('country-color');
+	var country = map.getCountryByIndex(index);
+		country.name = name.value;
+		country.color = color.value;
+	map.loadOptions();
+		document.getElementById('country-select').value = index;
+	outClick();
 }
 
 function outClick(){

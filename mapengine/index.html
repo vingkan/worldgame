@@ -44,8 +44,8 @@
 		<select id="country-select" onchange="viewCountry();">
 			<option value="-1">All Countries</option>
 		</select>
-		<input type="text" id="country-name" value="">
-		<input type="color" id="country-color" value="#000000">
+		<input type="text" id="country-name" value="" onchange="updateCurrentCountry();">
+		<input type="color" id="country-color" value="#000000" onchange="updateCurrentCountry();">
 	</div>
 
 	<textarea id="console"></textarea>
