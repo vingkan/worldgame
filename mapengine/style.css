@@ -96,10 +96,11 @@ div#canvas-wrap{
 	padding: 0;
 	width: 900px;
 	height: 400px;
-	overflow: hidden;
+	overflow: scroll;
 }
 
 	canvas#map{
+		float: left;
 		width: auto;
 		height: auto;
 		background: rgba(204, 204, 204, 0.75);

@@ -126,6 +126,14 @@ function getPosition(event){
 	x -= canvas.offsetLeft;
 	y -= canvas.offsetTop;
 
+	alert(pixelToNumber(canvas.style.marginLeft));
+	alert(pixelToNumber(canvas.style.marginTop));
+
+	x += pixelToNumber(canvas.style.marginLeft);
+	y += pixelToNumber(canvas.style.marginTop);
+
+	alert(x + ", " + y);
+
 	return new Coordinate(x, y);
 }
 
@@ -177,23 +185,23 @@ function moveCanvas(direction, magnitude){
 	var margin = null;
 	switch(direction){
 		case 'UP':
-			margin = parseInt(canvas.style.marginTop.match(/\d/g).join(""), 10);
-			canvas.style.marginTop = (margin - distance) + 'px';
-			break;
-		case 'DOWN':
-			margin = parseInt(canvas.style.marginTop.match(/\d/g).join(""), 10);
+			margin = pixelToNumber(canvas.style.marginTop);
 			canvas.style.marginTop = (margin + distance) + 'px';
 			break;
+		case 'DOWN':
+			margin = pixelToNumber(canvas.style.marginTop);
+			canvas.style.marginTop = (margin - distance) + 'px';
+			break;
 		case 'LEFT':
-			margin = parseInt(canvas.style.marginLeft.match(/\d/g).join(""), 10);
-			canvas.style.marginLeft = (margin - distance) + 'px';
+			margin = pixelToNumber(canvas.style.marginLeft);
+			canvas.style.marginLeft = (margin + distance) + 'px';
 			break;
 		case 'RIGHT':
-			margin = parseInt(canvas.style.marginLeft.match(/\d/g).join(""), 10);
-			canvas.style.marginLeft = (margin + distance) + 'px';
+			margin = pixelToNumber(canvas.style.marginLeft);
+			canvas.style.marginLeft = (margin - distance) + 'px';
 			break;
 		default:
 			break;
 	}
-	alert(margin + "+" + distance)
+	alert(margin + "+" + distance + "=" + (margin+distance))
 }
