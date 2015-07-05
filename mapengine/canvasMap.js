@@ -117,7 +117,7 @@ function getPosition(event){
 	
 	x -= canvas.offsetLeft;
 	y -= canvas.offsetTop;
-	
+
 	return new Coordinate(x, y);
 }
 

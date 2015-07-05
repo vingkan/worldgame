@@ -17,15 +17,18 @@
 <script type="text/javascript" src="canvasMap.js"></script>
 <script type="text/javascript" src="toolbar.js"></script>
 <script type="text/javascript" src="ioStream.js"></script>
+<script type="text/javascript" src="FileSaver.js"></script>
+<script type="text/javascript" src="canvasToBlob.js"></script>
 
 </head>
 
 <body>
 
 	<div id="header">
-		<div id="menu">
+		<!--<div id="menu">
 			<h1 style="width: 265px; float: left;">World Game Map Engine</h1>
-		</div>
+		</div>-->
+		<h1 style="text-align: center;">World Game Map Engine</h1>
 	</div>
 
 	<div class="spacer" style="height: 60px;"></div>
@@ -57,8 +60,13 @@
 
 	<textarea class="terminal" id="console" style="display: none;"></textarea>
 
-	<textarea class="terminal" id="inBox" style="width: 410px;"></textarea>
-	<textarea class="terminal" id="outBox" style="width: 410px; margin-left: 20px;"></textarea>
+	<div id="print-image" onclick="this.style.display='none';"></div>
+
+	<textarea class="terminal" id="inBox" style="width: 410px; height: 140px;"></textarea>
+	<textarea class="terminal" id="outBox" style="position: absolute; width: 410px; margin-left: 485px; height: 90px;"></textarea>
+
+	<input type="button" value="Save Image" onclick="saveImage();" style="background: orange; margin-top: 145px; margin-left: 25px;">
+	<input type="button" value="Save Text" onclick="saveOutput();" style="background: purple;">
 
 	<!--<h1>Heading 1</h1>
 	<h2>Heading 2</h2>
@@ -66,7 +74,7 @@
 	<p>Paragraph</p>-->
 
 	<p style="text-align: right; font-size: 12px;">
-		<i>Created by Vinesh Kannan for the World Game | V 1.0.0 July 2015 | kannanvineshg@gmail.com</i>
+		<i>Created by Vinesh Kannan for the World Game | V 1.1.0 July 2015 | kannanvineshg@gmail.com</i>
 	</p>
 
 <script>

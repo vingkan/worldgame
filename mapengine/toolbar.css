@@ -50,7 +50,7 @@ div.toolbar{
 	background: #CCCCCC;
 }
 
-div.toolbar input, select{
+input, select{
 	border: none;
 	outline: none;
 	margin: 10px;
@@ -62,24 +62,24 @@ div.toolbar input, select{
 	font-size: 15px;
 }
 
-div.toolbar input[type="number"]{
+input[type="number"]{
 	width: 50px;
 	height: 20px;
 	padding: 5px;
 	line-height: 20px;
 }
 
-div.toolbar input[type="text"]{
+input[type="text"]{
 	height: 20px;
 	padding: 5px;
 	line-height: 20px;
 }
 
-div.toolbar input[type="color"]{
+input[type="color"]{
 	position: absolute;
 }
 
-div.toolbar input[type="button"]{
+input[type="button"]{
 	width: auto;
 	padding-left: 10px;
 	padding-right: 10px;

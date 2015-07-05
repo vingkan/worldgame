@@ -6,14 +6,18 @@ html, body{
 }
 
 html{
-	background: #1A1A1A;
+	background: url('world1.jpg');
+	background-attachment: fixed;
+	background-width: 100%;
+	background-position: left;
 }
 
 body{
 	margin: auto;
 	width: 930px;
 	padding: 15px;
-	background: white;
+	background: rgba(255, 255, 255, 0.25);
+	border-radius: 30px;
 }
 
 div#header{
@@ -86,10 +90,16 @@ canvas#map{
 	margin: 15px;
 	width: 900px;
 	height: 400px;
-	background: #CCCCCC;
+	background: rgba(204, 204, 204, 0.75);
+}
+
+div#print-image{
+	margin: 15px;
+	width: 900px;
 }
 
 textarea.terminal{
+	float: left;
 	margin: 15px;
 	padding: 10px;
 	width: 880px;

@@ -105,3 +105,34 @@ IOStream.prototype.readOut = function(){
 	}
 	outBox.value = outStream;
 }
+
+function saveOutput(){
+	ioStream.readOut();
+	var text = document.getElementById('outBox').value;
+	var file = new Blob([text], {type: "text/plain;charset=utf-8"});
+	var date = new Date();
+	var timestamp = date.getTime();
+	saveAs(file, "Map Text Output (" + timestamp + ").txt");
+}
+
+function saveImage(){
+	var gridIncrement = document.getElementById('grid-increment');
+	var originalIncrement = gridIncrement.value;
+		gridIncrement.value = 900;
+		updateGrid();
+	//var image = canvas.toDataURL('image/png');
+	
+	var date = new Date();
+	var timestamp = date.getTime();
+	var filename = "Map Image Output (" + timestamp + ").png";
+
+	canvas.toBlob(function(blob){
+		saveAs(blob, filename);
+	})
+
+	/*var printImage = document.getElementById('print-image');
+	printImage.innerHTML = '<img src="' + image + '"/>';*/
+	gridIncrement.value = originalIncrement;
+	resetCanvas();
+	map.draw();
+}

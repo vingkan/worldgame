@@ -90,6 +90,9 @@ function deleteCountry(){
 		map.draw();
 		resetPointMenu();
 	}
+	if(map.countries.length == 0){
+		updateGrid();
+	}
 }
 
 function newCountry(inputName, inputColor){
