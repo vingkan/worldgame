@@ -4,9 +4,22 @@ function CanvasMap(id, countryList, temporary){
 	this.temporary = temporary || false;
 }
 
+CanvasMap.prototype.containsCountry = function(country){
+	var duplicate = false;
+	for(var i = 0; i < this.countries.length; i++){
+		if(this.countries[i].name == country.name){
+			duplicate = true;
+		}
+	}
+	return duplicate;
+}
+
 CanvasMap.prototype.pushCountry = function(country){
-	this.countries.push(country);
-	this.loadOptions();
+	var duplicate = this.containsCountry(country);
+	if(!duplicate){
+		this.countries.push(country);
+		this.loadOptions();
+	}
 }
 
 CanvasMap.prototype.loadOptions = function(){

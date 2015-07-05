@@ -4,8 +4,21 @@ function Country(name, color, pointsArray){
 	this.points = pointsArray || [];
 }
 
+Country.prototype.containsPoint = function(point){
+	var duplicate = false;
+	for(var i = 0; i < this.points.length; i++){
+		if(this.points[i].x == point.x && this.points[i].y == point.y){
+			duplicate = true;
+		}
+	}
+	return duplicate;
+}
+
 Country.prototype.pushPoint = function(point){
-	this.points.push(point);
+	var duplicate = this.containsPoint(point);
+	if(!duplicate){
+		this.points.push(point);
+	}
 }
 
 Country.prototype.showPoints = function(){

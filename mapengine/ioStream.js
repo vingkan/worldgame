@@ -4,14 +4,16 @@ function IOStream(){
 }
 
 function stream(){
+	//map.countries = [];
 	readInLines();
 	ioStream.runLines();
+	ioStream.readOut();
 }
 
 function readInLines(){
 	var lines = [];
-	var ioBox = document.getElementById('ioBox');
-	var parse = ioBox.value;
+	var inBox = document.getElementById('inBox');
+	var parse = inBox.value;
 	var newLine = "";
 	for(var i = 0; i < parse.length; i++){
 		if(parse.charAt(i) == '\n'){
@@ -24,7 +26,8 @@ function readInLines(){
 	}
 	lines.push(newLine);
 	ioStream.lines = lines;
-	return lines;
+	inBox.value = "";
+	//return lines;
 }
 
 IOStream.prototype.runLines = function(){
@@ -44,7 +47,7 @@ IOStream.prototype.command = function(line){
 			this.addPoint(command);
 			break;
 		default:
-			alert("Command Not Found.");
+			//alert("Command Not Found.");
 	}
 }
 
@@ -87,4 +90,18 @@ IOStream.prototype.addPoint = function(line){
 	//alert("new Point(" + coord1 + ", " + coord2 + ")");
 	map.countries[this.countryIndex].pushPoint(point);
 	showAllCountries();
+}
+
+IOStream.prototype.readOut = function(){
+	var outBox = document.getElementById('outBox');
+		outBox.value = "";
+	var outStream = "";
+	for(var i = 0; i < map.countries.length; i++){
+		outStream += 'cty ' + '"' + map.countries[i].name + '" ' + map.countries[i].color + '\n';
+		for(var j = 0; j < map.countries[i].points.length; j++){
+			outStream += 'pnt ' + map.countries[i].points[j].x + ' ' + map.countries[i].points[j].y + '\n';
+		}
+		outStream += '\n';
+	}
+	outBox.value = outStream;
 }

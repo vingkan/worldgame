@@ -56,8 +56,9 @@
 	</div>
 
 	<textarea class="terminal" id="console" style="display: none;"></textarea>
-
-	<textarea class="terminal" id="ioBox"></textarea>
+	
+	<textarea class="terminal" id="inBox" style="width: 410px;"></textarea>
+	<textarea class="terminal" id="outBox" style="width: 410px; margin-left: 20px;"></textarea>
 
 	<h1>Heading 1</h1>
 	<h2>Heading 2</h2>
@@ -74,7 +75,7 @@
 	var toolbar = new Toolbar();
 	var ioStream = new IOStream();
 
-	/*map.pushCountry(new Country("Drakhazia", "#ff0000", [
+	map.pushCountry(new Country("Drakhazia", "#ff0000", [
 			new Point(450, 350),
 			new Point(250, 280),
 			new Point(560, 80),
@@ -84,9 +85,11 @@
 			new Point(30, 80),
 			new Point(400, 120),
 			new Point(60, 250),
-		]));*/
+		]));
 
 	map.draw();
+
+	ioStream.readOut();
 
 </script>
 
