@@ -90,12 +90,20 @@ div#header{
 			font-weight: bold;
 		}
 
-canvas#map{
+div#canvas-wrap{
+	background: transparent;
 	margin: 15px;
+	padding: 0;
 	width: 900px;
 	height: 400px;
-	background: rgba(204, 204, 204, 0.75);
+	overflow: hidden;
 }
+
+	canvas#map{
+		width: auto;
+		height: auto;
+		background: rgba(204, 204, 204, 0.75);
+	}
 
 div#print-image{
 	margin: 15px;

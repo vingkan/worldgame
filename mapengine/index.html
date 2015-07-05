@@ -23,6 +23,7 @@
 <script type="text/javascript" src="ioStream.js"></script>
 <script type="text/javascript" src="FileSaver.js"></script>
 <script type="text/javascript" src="canvasToBlob.js"></script>
+<script type="text/javascript" src="shortcuts.js"></script>
 
 </head>
 
@@ -37,7 +38,9 @@
 
 	<div class="spacer" style="height: 60px;"></div>
 
-	<canvas id="map" width="900px" height="400px" background="red"></canvas>
+	<div id="canvas-wrap">
+		<canvas id="map" width="1800px" height="800px" background="red"></canvas>
+	</div>
 
 	<div id="pointMenu" style="display: none;">
 		<div id="arrowLeft"></div>
@@ -49,7 +52,13 @@
 	</div>
 
 	<div class="toolbar">
-		<input type="button" onclick="showAllCountries()" style="display: none;" accesskey="a">
+		<!-- SHORTCUTS -->
+		<input type="button" onclick="showAllCountries()" style="display: none;" accesskey="q">
+		<input type="button" onclick="moveCanvas('UP', 50)" style="display: none;" accesskey="w">
+		<input type="button" onclick="moveCanvas('DOWN', 50)" style="display: none;" accesskey="s">
+		<input type="button" onclick="moveCanvas('LEFT', 50)" style="display: none;" accesskey="a">
+		<input type="button" onclick="moveCanvas('RIGHT', 50)" style="display: none;" accesskey="d">
+		<!-- SHORTCUTS -->
 		<input type="button" value="I/O" onclick="stream();" style="background: blue;">
 		<select id="country-select" onchange="viewCountry();">
 			<option value="-1">All Countries</option>
@@ -86,6 +95,10 @@
 	var map = new CanvasMap('map');
 	var canvas = document.getElementById('map');
 		canvas.addEventListener('click', clickCanvas);
+		canvas.style.marginTop = '0px';
+		canvas.style.marginBottom = '0px';
+		canvas.style.marginLeft = '0px';
+		canvas.style.marginRight = '0px';
 	var ctx = canvas.getContext('2d');
 
 	var toolbar = new Toolbar();

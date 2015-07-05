@@ -170,3 +170,30 @@ function checkColor(x, y){
 	log(hex);
 	return hex;
 }
+
+function moveCanvas(direction, magnitude){
+	var distance = magnitude || 100;
+	//.match(/\d/g).join("")
+	var margin = null;
+	switch(direction){
+		case 'UP':
+			margin = parseInt(canvas.style.marginTop.match(/\d/g).join(""), 10);
+			canvas.style.marginTop = (margin - distance) + 'px';
+			break;
+		case 'DOWN':
+			margin = parseInt(canvas.style.marginTop.match(/\d/g).join(""), 10);
+			canvas.style.marginTop = (margin + distance) + 'px';
+			break;
+		case 'LEFT':
+			margin = parseInt(canvas.style.marginLeft.match(/\d/g).join(""), 10);
+			canvas.style.marginLeft = (margin - distance) + 'px';
+			break;
+		case 'RIGHT':
+			margin = parseInt(canvas.style.marginLeft.match(/\d/g).join(""), 10);
+			canvas.style.marginLeft = (margin + distance) + 'px';
+			break;
+		default:
+			break;
+	}
+	alert(margin + "+" + distance)
+}
