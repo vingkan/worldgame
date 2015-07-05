@@ -126,13 +126,11 @@ function getPosition(event){
 	x -= canvas.offsetLeft;
 	y -= canvas.offsetTop;
 
-	alert(pixelToNumber(canvas.style.marginLeft));
-	alert(pixelToNumber(canvas.style.marginTop));
+	var wrap = document.getElementById('canvas-wrap');
+	x += wrap.scrollLeft;
+	y += wrap.scrollTop;
 
-	x += pixelToNumber(canvas.style.marginLeft);
-	y += pixelToNumber(canvas.style.marginTop);
-
-	alert(x + ", " + y);
+	//alert(x + ", " + y);
 
 	return new Coordinate(x, y);
 }
@@ -177,31 +175,4 @@ function checkColor(x, y){
 	var hex = rgbToHex(data[0], data[1], data[2]);
 	log(hex);
 	return hex;
-}
-
-function moveCanvas(direction, magnitude){
-	var distance = magnitude || 100;
-	//.match(/\d/g).join("")
-	var margin = null;
-	switch(direction){
-		case 'UP':
-			margin = pixelToNumber(canvas.style.marginTop);
-			canvas.style.marginTop = (margin + distance) + 'px';
-			break;
-		case 'DOWN':
-			margin = pixelToNumber(canvas.style.marginTop);
-			canvas.style.marginTop = (margin - distance) + 'px';
-			break;
-		case 'LEFT':
-			margin = pixelToNumber(canvas.style.marginLeft);
-			canvas.style.marginLeft = (margin + distance) + 'px';
-			break;
-		case 'RIGHT':
-			margin = pixelToNumber(canvas.style.marginLeft);
-			canvas.style.marginLeft = (margin - distance) + 'px';
-			break;
-		default:
-			break;
-	}
-	alert(margin + "+" + distance + "=" + (margin+distance))
 }
