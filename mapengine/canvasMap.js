@@ -59,12 +59,15 @@ CanvasMap.prototype.draw = function(){
 				this.countries[i].showPoints();
 			}
 		}
-		var gridIncrement = parseInt(document.getElementById('grid-increment').value, 10);
-		drawGrid(gridIncrement, false);
+		if(toolbar.showGrid){
+			var gridIncrement = parseInt(document.getElementById('grid-increment').value, 10);
+			drawGrid(gridIncrement, false, toolbar.showNumbers);
+		}
 	}
 }
 
-function drawGrid(interval, nodes){
+function drawGrid(interval, nodes, numbers){
+	var gridText = numbers || false;
 	ctx.lineWidth = "0.5";
 	ctx.strokeStyle = "white";
 	//GRID TEXT
@@ -78,7 +81,9 @@ function drawGrid(interval, nodes){
 		ctx.lineTo(canvas.width, y);
 		ctx.stroke();
 		//GRID TEXT
-		ctx.fillText(y + "", 5, 5 + fontSize + y);
+		if(gridText){
+			ctx.fillText(y + "", 5, 5 + fontSize + y);
+		}
 	}
 	//VERTICAL GRIDLINES
 	for(var x = 0; x <= canvas.width; x += interval){
@@ -87,7 +92,9 @@ function drawGrid(interval, nodes){
 		ctx.lineTo(x, canvas.height);
 		ctx.stroke();
 		//GRID TEXT
-		ctx.fillText(x + "", 5 + x, 5 + fontSize);
+		if(gridText){
+			ctx.fillText(x + "", 5 + x, 5 + fontSize);
+		}
 	}
 	ctx.closePath();
 	if(nodes){
