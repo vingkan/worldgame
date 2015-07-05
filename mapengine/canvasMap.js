@@ -101,8 +101,14 @@ function drawGrid(interval, nodes){
 }
 
 function updateGrid(){
-	showAllCountries();
-
+	if(map.countries.length == 0){
+		resetCanvas();
+		var gridIncrement = parseInt(document.getElementById('grid-increment').value, 10);
+		drawGrid(gridIncrement, false);
+	}
+	else{
+		showAllCountries();
+	}
 }
 
 function getPosition(event){
