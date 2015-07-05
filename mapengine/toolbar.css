@@ -62,6 +62,13 @@ div.toolbar input, select{
 	font-size: 15px;
 }
 
+div.toolbar input[type="number"]{
+	width: 50px;
+	height: 20px;
+	padding: 5px;
+	line-height: 20px;
+}
+
 div.toolbar input[type="text"]{
 	height: 20px;
 	padding: 5px;

@@ -92,12 +92,15 @@ function deleteCountry(){
 	}
 }
 
-function newCountry(){
-	map.pushCountry(new Country("New Country", "#000000"));
+function newCountry(inputName, inputColor){
+	var name = inputName || "New Country";
+	var color = inputColor || "#000000"
+	map.pushCountry(new Country(name, color));
 	map.loadOptions();
 	var selector = document.getElementById('country-select');
 		selector.value = (map.countries.length-1);
 		viewCountry((map.countries.length-1));
+	return (map.countries.length-1);
 }
 
 function showAllCountries(){

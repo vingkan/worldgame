@@ -16,6 +16,7 @@
 <script type="text/javascript" src="country.js"></script>
 <script type="text/javascript" src="canvasMap.js"></script>
 <script type="text/javascript" src="toolbar.js"></script>
+<script type="text/javascript" src="ioStream.js"></script>
 
 </head>
 
@@ -42,14 +43,16 @@
 
 	<div class="toolbar">
 		<input type="button" onclick="showAllCountries()" style="display: none;" accesskey="a">
+		<input type="button" value="I/O" onclick="stream();" style="background: blue;">
 		<select id="country-select" onchange="viewCountry();">
 			<option value="-1">All Countries</option>
 		</select>
-		<input type="button" value="New Country" onclick="newCountry();" style="background: green;">
+		<input type="button" value="New" onclick="newCountry();" style="background: green;">
+		<input type="number" id="grid-increment" value="50" onchange="updateGrid();">
 		<!--<input type="button" value="&#10006" onclick="deleteCountry();" style="background: red;">-->
 		<input type="text" id="country-name" value="" onchange="updateCurrentCountry();">
 		<input type="color" id="country-color" value="#000000" onchange="updateCurrentCountry();">
-		<input type="button" id="country-delete" value="Delete Country" onclick="deleteCountry();" style="background: red; margin: 0 0 0 190px;">
+		<input type="button" id="country-delete" value="Delete" onclick="deleteCountry();" style="background: red; margin: 0 0 0 190px;">
 	</div>
 
 	<textarea class="terminal" id="console" style="display: none;"></textarea>
@@ -69,8 +72,9 @@
 	var ctx = canvas.getContext('2d');
 
 	var toolbar = new Toolbar();
+	var ioStream = new IOStream();
 
-	map.pushCountry(new Country("Drakhazia", "#ff0000", [
+	/*map.pushCountry(new Country("Drakhazia", "#ff0000", [
 			new Point(450, 350),
 			new Point(250, 280),
 			new Point(560, 80),
@@ -80,7 +84,7 @@
 			new Point(30, 80),
 			new Point(400, 120),
 			new Point(60, 250),
-		]));
+		]));*/
 
 	map.draw();
 

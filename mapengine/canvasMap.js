@@ -46,7 +46,8 @@ CanvasMap.prototype.draw = function(){
 				this.countries[i].showPoints();
 			}
 		}
-		drawGrid(50, false);
+		var gridIncrement = parseInt(document.getElementById('grid-increment').value, 10);
+		drawGrid(gridIncrement, false);
 	}
 }
 
@@ -84,6 +85,11 @@ function drawGrid(interval, nodes){
 			endNode.draw(ctx);
 		}
 	}
+}
+
+function updateGrid(){
+	showAllCountries();
+
 }
 
 function getPosition(event){
