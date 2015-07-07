@@ -4,6 +4,7 @@ function CanvasMap(id, countryList, temporary){
 	this.temporary = temporary || false;
 }
 
+<<<<<<< HEAD
 function zoom(zoomIn){
 	var zoomScale = 1;
 	if(zoomIn){
@@ -15,6 +16,8 @@ function zoom(zoomIn){
 	map.scaleDraw(toolbar.scale);
 }
 
+=======
+>>>>>>> parent of 5e1b94e... Implemented basic zoom slider
 CanvasMap.prototype.scaleDraw = function(scale){
 	toolbar.scale = scale;
 	for(var i = 0; i < this.countries.length; i++){
@@ -28,13 +31,14 @@ CanvasMap.prototype.scaleDraw = function(scale){
 		gridIncrement.value = scale(originalIncrement);*/
 	resetCanvas();
 	this.draw();
+	scaleGrid();
 }
 
-/*function scaleGrid(){
+function scaleGrid(){
 	var gridIncrement = document.getElementById('grid-increment');
 		gridIncrement.value = scale(parseInt(gridIncrement.value, 10));
 	updateGrid();
-}*/
+}
 
 CanvasMap.prototype.containsCountry = function(country){
 	var duplicate = false;
@@ -107,7 +111,7 @@ function drawGrid(interval, nodes, numbers){
 	ctx.fillStyle = 'white';
 	ctx.font = fontSize + 'px Open Sans';
 	//HORIZONTAL GRIDLINES
-	for(var y = 0; y <= canvas.height; y += scale(interval)){
+	for(var y = 0; y <= canvas.height; y += interval){
 		ctx.beginPath();
 		ctx.moveTo(0, y);
 		ctx.lineTo(canvas.width, y);
@@ -118,7 +122,7 @@ function drawGrid(interval, nodes, numbers){
 		}
 	}
 	//VERTICAL GRIDLINES
-	for(var x = 0; x <= canvas.width; x += scale(interval)){
+	for(var x = 0; x <= canvas.width; x += interval){
 		ctx.beginPath();
 		ctx.moveTo(x, 0);
 		ctx.lineTo(x, canvas.height);

@@ -140,8 +140,8 @@ div#canvas-wrap{
 
 	canvas#map{
 		float: left;
-		width: 9000px;
-		height: 9000px;
+		width: 5000px;
+		height: 5000px;
 		background: rgba(204, 204, 204, 0.75);
 	}
 
