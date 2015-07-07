@@ -5,6 +5,7 @@ function CanvasMap(id, countryList, temporary){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function zoom(zoomIn){
 	var zoomScale = 1;
 	if(zoomIn){
@@ -16,6 +17,8 @@ function zoom(zoomIn){
 	map.scaleDraw(toolbar.scale);
 }
 
+=======
+>>>>>>> parent of 5e1b94e... Implemented basic zoom slider
 =======
 >>>>>>> parent of 5e1b94e... Implemented basic zoom slider
 CanvasMap.prototype.scaleDraw = function(scale){
