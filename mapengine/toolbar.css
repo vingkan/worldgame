@@ -87,3 +87,7 @@ input[type="button"]{
 	color: white;
 	font-weight: bold;
 }
+
+input[type="range"]{
+	width: 800px;
+}

@@ -5,14 +5,8 @@ function CanvasMap(id, countryList, temporary){
 }
 
 function zoom(zoomIn){
-	var zoomScale = 1;
-	if(zoomIn){
-		zoomScale += 0.5;
-	}
-	else{
-		zoomScale -= 0.5;
-	}
-	map.scaleDraw(toolbar.scale);
+	var zoomSlider = document.getElementById('zoom');
+	map.scaleDraw(zoomSlider.value);
 }
 
 CanvasMap.prototype.scaleDraw = function(scale){
@@ -100,6 +94,7 @@ CanvasMap.prototype.draw = function(){
 }
 
 function drawGrid(interval, nodes, numbers){
+	var scaledInterval = scale(interval);
 	var gridText = numbers || false;
 	ctx.lineWidth = "0.5";
 	ctx.strokeStyle = "white";
@@ -108,25 +103,25 @@ function drawGrid(interval, nodes, numbers){
 	ctx.fillStyle = 'white';
 	ctx.font = fontSize + 'px Open Sans';
 	//HORIZONTAL GRIDLINES
-	for(var y = 0; y <= canvas.height; y += interval){
+	for(var y = 0; y <= canvas.height; y += scaledInterval){
 		ctx.beginPath();
 		ctx.moveTo(0, y);
 		ctx.lineTo(canvas.width, y);
 		ctx.stroke();
 		//GRID TEXT
 		if(gridText){
-			ctx.fillText(scaleLabel(y) + "", 5, 5 + fontSize + y);
+			ctx.fillText(Math.round(scaleLabel(y)) + "", 5, 5 + fontSize + y);
 		}
 	}
 	//VERTICAL GRIDLINES
-	for(var x = 0; x <= canvas.width; x += interval){
+	for(var x = 0; x <= canvas.width; x += scaledInterval){
 		ctx.beginPath();
 		ctx.moveTo(x, 0);
 		ctx.lineTo(x, canvas.height);
 		ctx.stroke();
 		//GRID TEXT
 		if(gridText){
-			ctx.fillText(scaleLabel(x) + "", 5 + x, 5 + fontSize);
+			ctx.fillText(Math.round(scaleLabel(x)) + "", 5 + x, 5 + fontSize);
 		}
 	}
 	ctx.closePath();
