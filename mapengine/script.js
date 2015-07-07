@@ -56,3 +56,16 @@ function rgbToHex(r, g, b) {
 function pixelToNumber(string){
 	return parseInt(string.match(/\d/g).join(""), 10);
 }
+
+function reDraw(){
+	resetCanvas();
+	map.draw();
+}
+
+function scale(value){
+	return (value * toolbar.scale);
+}
+
+function scaleLabel(value){
+	return (value / toolbar.scale);
+}

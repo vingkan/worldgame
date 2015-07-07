@@ -4,6 +4,28 @@ function CanvasMap(id, countryList, temporary){
 	this.temporary = temporary || false;
 }
 
+CanvasMap.prototype.scaleDraw = function(scale){
+	toolbar.scale = scale;
+	for(var i = 0; i < this.countries.length; i++){
+		for(var j = 0; j < this.countries[i].points.length; j++){
+			this.countries[i].points[j].resetScale();
+			this.countries[i].points[j].scalePoint();
+		}
+	}
+	/*var gridIncrement = document.getElementById('grid-increment');
+		var originalIncrement = parseInt(gridIncrement.value, 10);
+		gridIncrement.value = scale(originalIncrement);*/
+	resetCanvas();
+	this.draw();
+	scaleGrid();
+}
+
+function scaleGrid(){
+	var gridIncrement = document.getElementById('grid-increment');
+		gridIncrement.value = scale(parseInt(gridIncrement.value, 10));
+	updateGrid();
+}
+
 CanvasMap.prototype.containsCountry = function(country){
 	var duplicate = false;
 	for(var i = 0; i < this.countries.length; i++){
@@ -82,7 +104,7 @@ function drawGrid(interval, nodes, numbers){
 		ctx.stroke();
 		//GRID TEXT
 		if(gridText){
-			ctx.fillText(y + "", 5, 5 + fontSize + y);
+			ctx.fillText(scaleLabel(y) + "", 5, 5 + fontSize + y);
 		}
 	}
 	//VERTICAL GRIDLINES
@@ -93,7 +115,7 @@ function drawGrid(interval, nodes, numbers){
 		ctx.stroke();
 		//GRID TEXT
 		if(gridText){
-			ctx.fillText(x + "", 5 + x, 5 + fontSize);
+			ctx.fillText(scaleLabel(x) + "", 5 + x, 5 + fontSize);
 		}
 	}
 	ctx.closePath();

@@ -1,13 +1,25 @@
 function Point(x, y, color, radius){
+	this.xReal = x;
+	this.yReal = y;
 	this.x = x;
 	this.y = y;
 	this.color = color || '#1A1A1A';
-	this.radius = radius || 10;
+	this.radius = radius || 15;
 	this.fill = false;
 }
 
 Point.prototype.toString = function(){
 	return "Point at (" + this.x + ", " + this.y + ").";
+}
+
+Point.prototype.resetScale = function(){
+	this.x = this.xReal;
+	this.y = this.yReal;
+}
+
+Point.prototype.scalePoint = function(){
+	this.x = scale(this.x);
+	this.y = scale(this.y);
 }
 
 Point.prototype.draw = function(){

@@ -6,6 +6,7 @@ function Toolbar(){
 	this.backwardIndex = null;
 	this.showGrid = true;
 	this.showNumbers = true;
+	this.scale = 1;
 }
 
 Toolbar.prototype.pushTempPoint = function(point){
@@ -179,7 +180,7 @@ function headerShift(){
 	}
 }
 
-function scale(x, y, scalar){
+/*function scale(x, y, scalar){
 	var display = document.getElementById('canvas-wrap');
 	var displayWidth = pixelToNumber(display.style.width);
 	var displayHeight = pixelToNumber(display.style.height);
@@ -187,4 +188,4 @@ function scale(x, y, scalar){
 	var newY = (y / displayHeight) * scalar;
 	var point = new Point(newX, newY);
 	return point;
-}
+}*/
