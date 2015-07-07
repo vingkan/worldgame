@@ -99,7 +99,7 @@ IOStream.prototype.readOut = function(){
 	for(var i = 0; i < map.countries.length; i++){
 		outStream += 'cty ' + '"' + map.countries[i].name + '" ' + map.countries[i].color + '\n';
 		for(var j = 0; j < map.countries[i].points.length; j++){
-			outStream += 'pnt ' + map.countries[i].points[j].x + ' ' + map.countries[i].points[j].y + '\n';
+			outStream += 'pnt ' + map.countries[i].points[j].xReal + ' ' + map.countries[i].points[j].yReal + '\n';
 		}
 		outStream += '\n';
 	}

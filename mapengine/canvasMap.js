@@ -4,6 +4,11 @@ function CanvasMap(id, countryList, temporary){
 	this.temporary = temporary || false;
 }
 
+function zoom(){
+	var zoomScale = document.getElementById('zoom-scale');
+	map.scaleDraw(zoomScale.value);
+}
+
 CanvasMap.prototype.scaleDraw = function(scale){
 	toolbar.scale = scale;
 	for(var i = 0; i < this.countries.length; i++){
@@ -17,14 +22,13 @@ CanvasMap.prototype.scaleDraw = function(scale){
 		gridIncrement.value = scale(originalIncrement);*/
 	resetCanvas();
 	this.draw();
-	scaleGrid();
 }
 
-function scaleGrid(){
+/*function scaleGrid(){
 	var gridIncrement = document.getElementById('grid-increment');
 		gridIncrement.value = scale(parseInt(gridIncrement.value, 10));
 	updateGrid();
-}
+}*/
 
 CanvasMap.prototype.containsCountry = function(country){
 	var duplicate = false;
@@ -97,7 +101,7 @@ function drawGrid(interval, nodes, numbers){
 	ctx.fillStyle = 'white';
 	ctx.font = fontSize + 'px Open Sans';
 	//HORIZONTAL GRIDLINES
-	for(var y = 0; y <= canvas.height; y += interval){
+	for(var y = 0; y <= canvas.height; y += scale(interval)){
 		ctx.beginPath();
 		ctx.moveTo(0, y);
 		ctx.lineTo(canvas.width, y);
@@ -108,7 +112,7 @@ function drawGrid(interval, nodes, numbers){
 		}
 	}
 	//VERTICAL GRIDLINES
-	for(var x = 0; x <= canvas.width; x += interval){
+	for(var x = 0; x <= canvas.width; x += scale(interval)){
 		ctx.beginPath();
 		ctx.moveTo(x, 0);
 		ctx.lineTo(x, canvas.height);
