@@ -43,7 +43,8 @@
 		<canvas id="map" width="9000px" height="9000px" background="red"></canvas>
 	</div>
 
-	<input id="zoom-scale" type="range" name="points" min="1" max="10" value="1" onchange="zoom();">
+	<input type="button" value="+" class="zoom-button" onclick="zoom(true);" style="background: blue;">
+	<input type="button" value="-" class="zoom-button" onclick="zoom(false);" style="background: red;">
 
 	<div id="pointMenu" style="display: none;">
 		<div id="arrowLeft"></div>

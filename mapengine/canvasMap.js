@@ -4,9 +4,15 @@ function CanvasMap(id, countryList, temporary){
 	this.temporary = temporary || false;
 }
 
-function zoom(){
-	var zoomScale = document.getElementById('zoom-scale');
-	map.scaleDraw(zoomScale.value);
+function zoom(zoomIn){
+	var zoomScale = 1;
+	if(zoomIn){
+		zoomScale += 0.5;
+	}
+	else{
+		zoomScale -= 0.5;
+	}
+	map.scaleDraw(toolbar.scale);
 }
 
 CanvasMap.prototype.scaleDraw = function(scale){
